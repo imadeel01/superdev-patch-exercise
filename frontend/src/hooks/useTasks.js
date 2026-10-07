@@ -18,6 +18,10 @@ export function useTasks(query, status, page, pageSize) {
       })
       .catch((err) => {
         setError(err.message);
+      })
+      //this ensures that loading is set to false even if an error occurs.
+      .finally(() => {
+        setLoading(false);
       });
   }, [query, status, page, pageSize]);
 
